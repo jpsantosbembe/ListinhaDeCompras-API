@@ -1,15 +1,23 @@
 package com.joaobembe.listinhadecompras.api.model;
 
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "produto")
 public class Produto implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(nullable = false)
     private String codigoGtinEan;
+    @Column(nullable = false)
     private String descricao;
+    @Column(nullable = false)
     private String imgURL;
-
     public Produto() {
     }
 
