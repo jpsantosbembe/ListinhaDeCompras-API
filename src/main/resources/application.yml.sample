@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: tem certeza
+    username:
+    password:
+    driver-class-name: org.postgresql.Driver
