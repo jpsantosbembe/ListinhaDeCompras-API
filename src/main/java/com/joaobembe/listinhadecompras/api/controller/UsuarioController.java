@@ -1,7 +1,9 @@
 package com.joaobembe.listinhadecompras.api.controller;
 
-import com.joaobembe.listinhadecompras.api.model.Produto;
-import com.joaobembe.listinhadecompras.api.services.ProdutoServices;
+import com.joaobembe.listinhadecompras.api.model.Carrinho;
+import com.joaobembe.listinhadecompras.api.model.Usuario;
+import com.joaobembe.listinhadecompras.api.services.CarrinhoService;
+import com.joaobembe.listinhadecompras.api.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -10,20 +12,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/produto")
-public class ProdutoController{
-
+@RequestMapping("/usuario")
+public class UsuarioController {
     @Autowired
-    private ProdutoServices services;
+    private UsuarioService services;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Produto create (@RequestBody() Produto produto) {
-        return services.create(produto);
+    public Usuario create (@RequestBody() Usuario usuario) {
+        return services.create(usuario);
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Produto update (@RequestBody() Produto produto){
-        return services.update(produto);
+    public Usuario update (@RequestBody() Usuario usuario){
+        return services.update(usuario);
     }
 
     @DeleteMapping(value = "/{id}")
@@ -33,13 +34,12 @@ public class ProdutoController{
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Produto> findAll() {
+    public List<Usuario> findAll() {
         return services.findAll();
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Produto findById(@PathVariable("id") Long id) {
+    public Usuario findById(@PathVariable("id") Long id) {
         return services.findById(id);
     }
-
 }

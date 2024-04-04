@@ -1,6 +1,7 @@
 package com.joaobembe.listinhadecompras.api.controller;
 
-import com.joaobembe.listinhadecompras.api.model.Produto;
+import com.joaobembe.listinhadecompras.api.model.Estabelecimento;
+import com.joaobembe.listinhadecompras.api.services.EstabelecimentoService;
 import com.joaobembe.listinhadecompras.api.services.ProdutoServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -10,20 +11,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/produto")
-public class ProdutoController{
-
+@RequestMapping("/estabelecimento")
+public class EstabelecimentoController {
     @Autowired
-    private ProdutoServices services;
+    private EstabelecimentoService services;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Produto create (@RequestBody() Produto produto) {
-        return services.create(produto);
+    public Estabelecimento create (@RequestBody() Estabelecimento estabelecimento) {
+        return services.create(estabelecimento);
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Produto update (@RequestBody() Produto produto){
-        return services.update(produto);
+    public Estabelecimento update (@RequestBody() Estabelecimento estabelecimento) {
+        return services.update(estabelecimento);
     }
 
     @DeleteMapping(value = "/{id}")
@@ -33,13 +33,12 @@ public class ProdutoController{
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Produto> findAll() {
+    public List<Estabelecimento> findAll() {
         return services.findAll();
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Produto findById(@PathVariable("id") Long id) {
+    public Estabelecimento findById(@PathVariable("id") Long id) {
         return services.findById(id);
     }
-
 }
